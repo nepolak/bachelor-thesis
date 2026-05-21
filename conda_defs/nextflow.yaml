@@ -1,0 +1,6 @@
+name: nextflow-env
+channels:
+  - bioconda
+  - defaults
+dependencies:
+  - nextflow==25.04.7
