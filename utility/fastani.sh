@@ -5,6 +5,7 @@
 #SBATCH --partition=main
 
 # This one relies on conda being defined in the bashrc. Make sure it is.
-conda activate ./intermediates/conda/nextflow
+eval "$(conda shell.bash hook)"
+conda activate $5
 
-srun nextflow -C nextflow.config run fastani.nf --inputs_folder=$1 --inputs_index=$2
+srun nextflow -C $1 run $2 --inputs_folder=$3 --inputs_index=$4

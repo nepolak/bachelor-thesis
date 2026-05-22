@@ -7,7 +7,11 @@ if [ ! -d "$GTDBTK_DATA_PATH" ]; then
     exit 1
 fi
 
-mkdir -P intermediates/cwd/gtdbtk
-cd intermediates/cwd/gtdbtk
+host_dir="$(pwd)"
+intermediates_dir="$host_dir/intermediates"
+cwd_dir="$intermediates_dir/cwd/gtdbtk"
 
-sbatch ../../../utility/gtdbtk.sh ../../mags gtdb_out
+mkdir -p $cwd_dir
+cd $cwd_dir
+
+sbatch "$host_dir/utility/gtdbtk.sh" "$intermediates_dir/mags" "$intermediates_dir/conda/"
